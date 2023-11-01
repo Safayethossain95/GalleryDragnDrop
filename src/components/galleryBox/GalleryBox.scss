@@ -1,0 +1,35 @@
+.galleryboxmain{
+    height:auto;
+    max-width: calc(50vw - 200px);
+    background-color: #eee;
+    border-radius: 4px;
+    margin:0 auto;
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding:20px;
+    
+    .grid-item {
+        border: 1px solid #ccc;
+        
+        text-align: center;
+        background-color: #fff;
+        border-radius: 5px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+      }
+    }
+
+    .wide {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .Board{
+        width: 400px;
+        height: 400px;
+        border:1px solid red;
+    }
