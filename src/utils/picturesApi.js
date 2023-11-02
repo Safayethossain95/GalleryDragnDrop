@@ -1,38 +1,56 @@
 export const picturesApi = [
     {
         id:1,
-        imgurl:"./assets/images/image-11.jpeg"
+        order:0,
+        imgurl:"./assets/images/image-11.jpeg",
+        checkbox:false
     },
     {
         id:2,
-        imgurl:"./assets/images/image-2.webp"
+        order:1,
+        imgurl:"./assets/images/image-2.webp",
+        checkbox:false
     },
     {
         id:3,
-        imgurl:"./assets/images/image-3.webp"
+        order:2,
+        imgurl:"./assets/images/image-3.webp",
+        checkbox:false
     },
     {
         id:4,
-        imgurl:"./assets/images/image-4.webp"
+        order:3,
+        imgurl:"./assets/images/image-4.webp",
+        checkbox:false
     },
     {
         id:5,
-        imgurl:"./assets/images/image-5.webp"
+        order:4,
+        imgurl:"./assets/images/image-5.webp",
+        checkbox:false
     },
     {
         id:6,
-        imgurl:"./assets/images/image-6.webp"
+        order:5,
+        imgurl:"./assets/images/image-6.webp",
+        checkbox:false
     },
     {
         id:7,
-        imgurl:"./assets/images/image-7.webp"
+        order:6,
+        imgurl:"./assets/images/image-7.webp",
+        checkbox:false
     },
     {
         id:8,
-        imgurl:"./assets/images/image-8.webp"
+        order:7,
+        imgurl:"./assets/images/image-8.webp",
+        checkbox:false
     },
     {
         id:9,
-        imgurl:"./assets/images/image-9.webp"
+        order:8,
+        imgurl:"./assets/images/image-9.webp",
+        checkbox:false
     },
 ]
