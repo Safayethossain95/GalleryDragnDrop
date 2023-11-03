@@ -2,29 +2,26 @@ import React, { useState } from "react";
 import "./GalleryBox.scss";
 import { picturesApi } from "../../utils/picturesApi";
 import PictureSingle from "../pictureSingle/PictureSingle";
-import { useDrop } from "react-dnd";
-
 const GalleryBox = () => {
+  // change the page body color 
   document.body.style.backgroundColor = "#eceff6";
+  const [counted, setcounted] = useState([]);
   const [board, setBoard] = useState(picturesApi);
   const handleids = (targetid, draggedid) => {
     setBoard((prevItems) => switchPositions(prevItems, targetid, draggedid));
   };
-
+  // sorting
   const switchPositions = (array, id1, id2) => {
     const index1 = array.findIndex((item) => item.id === id1);
     const index2 = array.findIndex((item) => item.id === id2);
-
     const newArray = [...array];
     [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
-
     newArray.forEach((item, index) => {
       item.id = index + 1;
     });
-
     return newArray;
   };
-  const [counted, setcounted] = useState([]);
+  // function for counting selected items 
   const countSelectedfunc = (ids) => {    
     const find = counted.includes(ids);
     if (find) {
@@ -33,16 +30,12 @@ const GalleryBox = () => {
       setcounted((prevArr) => [...prevArr, ids]);
     }
   };
-
-  const handlenone = () => {};
-  const [clearCheked,setclearCheked] = useState(null)
+  const handlenone = () => {};  
+  // delete the selected ids by id
   const handleDelete=()=>{
     setBoard(board.filter(item => !counted.includes(item.id)))
-    setcounted([])
-    setclearCheked(false)
+    setcounted([])    
   }
-  
-
   return (
     <>
       <div className="wrapper">
@@ -65,7 +58,7 @@ const GalleryBox = () => {
           </div>
           <div className="right">
             {counted.length > 0 ? (
-              counted.length == 1 ? (
+              counted.length === 1 ? (
                 <p onClick={handleDelete}>Delete File</p>
               ) : (
                 <p onClick={handleDelete}>Delete Files</p>
@@ -75,15 +68,10 @@ const GalleryBox = () => {
             )}
           </div>
         </div>
-        <div className="galleryboxmain" style={{ minHeight: "500px" }}>
+        <div className="galleryboxmain">
           {board.map((picture, key) => {
             return (
-             
-                
-                  <PictureSingle
-                    clearchk={clearCheked?clearCheked:null}
-                    
-                    
+                  <PictureSingle                    
                     countfunc={countSelectedfunc}
                     func={handleids}
                     first={key === 0 ? "true" : "false"}
@@ -92,9 +80,7 @@ const GalleryBox = () => {
                     isChecked={picture.checkbox} 
                     board={board}
                     setboard={setBoard}
-                    
                   />
-                
             );
           })}
         </div>
@@ -102,5 +88,4 @@ const GalleryBox = () => {
     </>
   );
 };
-
 export default GalleryBox;
