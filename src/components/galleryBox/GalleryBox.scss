@@ -1,7 +1,7 @@
 
 .wrapper{
   height:auto;
-  max-width: calc(50vw - 200px);
+  width: 700px;
   background-color: #fff;
   border-radius: 4px;
   margin:0 auto;
@@ -42,7 +42,7 @@
 
     .topbar{
       height: 50px;
-      width: calc(50vw - 200px);
+      width: 700px;
       border-bottom: 1px solid #eee;
       align-items: center;
       display: flex;

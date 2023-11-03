@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./PictureSingle.scss";
 import { useDrag } from "react-dnd";
 import { useDrop } from "react-dnd";
-const PictureSingle = ({ imgurl, first, id, func, countfunc,transform,translate,isChecked,uncheck,board,setboard }) => {
+const PictureSingle = ({ imgurl, first, id, func, countfunc,isChecked,board,setboard }) => {
   // const [{ isDragging }, drag] = useDrag(() => ({
   //   type: "image",
   //   item: { id: id },
@@ -69,7 +69,7 @@ const PictureSingle = ({ imgurl, first, id, func, countfunc,transform,translate,
     <>
       <div
         ref={(node) => drag(drop(node))}
-        style={{ border: isDragging ? "5px solid pink" : "0px",transition:"0.3s",transform:transform,translate:translate }}
+        style={{ border: isDragging ? "5px solid pink" : "0px",transition:"0.3s" }}
         className={first === "true" ? "grid-item wide" : "grid-item"}
       >
         <div className="overlay" style={{...(isDragging ?{opacity:"0"}:{}),...(isChecked?{opacity:"1",background:"#ffffff9f",border:"1px solid rgb(50, 50, 209)"}:{})}}>

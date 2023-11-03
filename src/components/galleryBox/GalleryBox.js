@@ -3,7 +3,7 @@ import "./GalleryBox.scss";
 import { picturesApi } from "../../utils/picturesApi";
 import PictureSingle from "../pictureSingle/PictureSingle";
 import { useDrop } from "react-dnd";
-import { Motion, spring } from "react-motion";
+
 const GalleryBox = () => {
   document.body.style.backgroundColor = "#eceff6";
   const [board, setBoard] = useState(picturesApi);
@@ -25,8 +25,7 @@ const GalleryBox = () => {
     return newArray;
   };
   const [counted, setcounted] = useState([]);
-  const countSelectedfunc = (ids) => {
-    console.log(ids);
+  const countSelectedfunc = (ids) => {    
     const find = counted.includes(ids);
     if (find) {
       setcounted((prevArr) => prevArr.filter((item) => item !== ids));
@@ -34,6 +33,7 @@ const GalleryBox = () => {
       setcounted((prevArr) => [...prevArr, ids]);
     }
   };
+
   const handlenone = () => {};
   const [clearCheked,setclearCheked] = useState(null)
   const handleDelete=()=>{
@@ -41,14 +41,6 @@ const GalleryBox = () => {
     setcounted([])
     setclearCheked(false)
   }
-  const [isCheckedmain,setIsCheckedMain] = useState(false)
-  const handleCheckboxChange = (id, value) => {
-    countSelectedfunc(id)
-    setIsCheckedMain((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
   
 
   return (
@@ -86,31 +78,23 @@ const GalleryBox = () => {
         <div className="galleryboxmain" style={{ minHeight: "500px" }}>
           {board.map((picture, key) => {
             return (
-              <Motion
-                key={key}
-                style={{
-                  x: spring((key % 5) * 120),
-                  y: spring(Math.floor(key / 5) * 120),
-                }}
-              >
-                {({ x, y }) => (
+             
+                
                   <PictureSingle
                     clearchk={clearCheked?clearCheked:null}
-                    translate={`translate(${x}px, ${y}px)`}
-                    transform="transform 0.3s ease-out"
+                    
+                    
                     countfunc={countSelectedfunc}
                     func={handleids}
                     first={key === 0 ? "true" : "false"}
                     imgurl={picture.imgurl}
                     id={picture.id}
                     isChecked={picture.checkbox} 
-                    handleCheckboxChange={handleCheckboxChange}
                     board={board}
                     setboard={setBoard}
                     
                   />
-                )}
-              </Motion>
+                
             );
           })}
         </div>
